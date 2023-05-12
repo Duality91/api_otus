@@ -48,10 +48,9 @@ class TestBrewery():
         check = result.json()
         assert len(check) == pages
         print(f'The number of requested breweries matches the expected number: {pages}')
-        for f in check:
-            if f == 'city':
-                assert check.get('city') == city
-                print(f'The name of the city matches the requested: {city}')
+        for data in check:
+            assert data.get('city') == city
+            print(f'The name of the city matches the requested: {city}')
 
 
     @pytest.mark.parametrize('country, expected_total_num', [('united_states', '7933'), ('south_korea', '61')], ids=['USA', 'South Korea'])
